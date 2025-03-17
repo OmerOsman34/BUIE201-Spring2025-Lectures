@@ -2,19 +2,21 @@
 
 class Node:
     def __init__(self, code: str) -> None:
-        self.code = code
-        
+        self._code = code
+
+    def get_code(self):
+        return self._code
 class DAG:
     def __init__(self) -> None:
-         self.nodes = []
-         self.arcs = []
+         self._nodes = []
+         self._arcs = []
 
 
     def incomming_arcs(self, v: Node):
         # Discuss performance
 
         inarcs = []
-        for a in self.arcs:
+        for a in self._arcs:
             if (a.to_node == v):
                 inarcs.append(a)
         return inarcs
@@ -35,10 +37,15 @@ class DAG:
     
 class Arc:
     def __init__(self, from_node: Node, to_node: Node, distance: int) -> None:
-        self.from_node = from_node
-        self.to_node = to_node
-        self.distance = distance
-
+        self._from_node = from_node
+        self._to_node = to_node
+        self._distance = distance
+    def get_from_node(self):
+        return self._from_node
+    def get_to_node(self):
+        return self._to_node
+    def get_distance(self):
+        return self._distance
 d = DAG()
 
 d.nodes.append(Node(1))
